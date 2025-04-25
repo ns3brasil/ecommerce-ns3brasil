@@ -1,165 +1,247 @@
-/* Reset básico */
+/* ==========================
+   RESET BÁSICO
+========================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: #fff;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  /* HEADER */
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background-color: #000000;
-    color: white;
-    padding: 0.75rem 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+/* ==========================
+   HEADER FIXO
+========================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #000000;
+  color: white;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav {
+  display: none;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+
+/* ==========================
+   BANNER PRINCIPAL
+========================== */
+.banner {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.banner-img {
+  width: 90%;
+  margin: 30px 0;
+  padding: 25px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+/* ==========================
+   SEÇÃO PRODUTOS
+========================== */
+.produtos-destaque {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.card-produto {
+  background-color: rgba(200, 200, 200, 0.15);
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card-produto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-produto img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.card-produto h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.preco {
+  display: block;
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: #000000;
+}
+
+.btn-comprar {
+  padding: 0.5rem 1rem;
+  background-color: #E6A91C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-comprar:hover {
+  background-color: #e0bd6ab4;
+}
+
+
+/* ==========================
+   BANNER SALÃO DE BELEZA
+========================== */
+.banner-salao {
+  background-image: url('assets/banner-salão.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  aspect-ratio: 16 / 5;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.banner-salao::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.salao-content {
+  position: absolute;
+  bottom: 4%;
+  right: 5%;
+  z-index: 2;
+}
+
+.btn-salao {
+  background-color: #E6A91C;
+  color: white;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  padding: 0.5em 1.2em;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-salao:hover {
+  background-color: #dba21f;
+}
+
+
+/* ==========================
+   RODAPÉ
+========================== */
+.rodape {
+  background: #f3f3f3;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+
+/* ==========================
+   RESPONSIVIDADE
+========================== */
+
+/* Produtos em carrossel no mobile */
+@media (max-width: 600px) {
+  .grid-produtos {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1080px;
-    margin: 0 auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding-bottom: 1rem;
   }
-  
-  .logo-img {
-    height: 40px; /* altura pequena */
-    width: auto;  /* mantém proporção original */
-    object-fit: contain;
+
+  .card-produto {
+    flex: 0 0 90%;
+    scroll-snap-align: center;
   }
-  
-  
+}
+
+/* Ativa menu em telas maiores */
+@media (min-width: 768px) {
   .nav {
+    display: block !important;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .menu-toggle {
     display: none;
   }
-  
-  .nav-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  .nav-list a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .menu-toggle {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-  
-  /* BANNER */
-  .banner {
-    position: relative;
-    text-align: center;
-    color: white;
-  }
-  
-  .banner-img {
-    width: 90%;
-    margin: 30px 0; 
-    padding: 25px;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  
-  
-  /* PRODUTOS */
-  .produtos-destaque {
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-  
-  .grid-produtos {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-top: 1.5rem;
-  }
-  
-  .card-produto {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 8px;
-  }
-  
-  .card-produto img {
-    width: 100%;
-    border-radius: 6px;
-  }
-  
-  .card-produto h3 {
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
-  }
-  
-  .preco {
-    display: block;
-    margin: 0.5rem 0;
-    font-weight: bold;
-    color: #000000;
-  }
-  
-  .btn-comprar {
-    padding: 0.5rem 1rem;
-    background-color: #E6A91C;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-comprar:hover {
-    background-color: #e0bd6ab4;
-  }
-  
-  /* RODAPÉ */
-  .rodape {
-    background: #f3f3f3;
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    margin-top: 2rem;
-  }
-  
-  /* === MEDIA QUERIES === */
-  
-  /* >= 600px: produtos em 3 colunas */
-  @media (min-width: 600px) {
-    .grid-produtos {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  /* >= 768px: menu desktop visível */
-  @media (min-width: 768px) {
-    .nav {
-      display: block !important;
-    }
-  
-    .nav-list {
-      flex-direction: row;
-      margin-top: 0;
-    }
-  
-    .menu-toggle {
-      display: none;
-    }
-  }
-  
+}
